@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+   <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :query, params[:query],
+    class: "form-control",
+    placeholder: "Find a Movie" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+   <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div id="movies">
+        <% @results.each do |result| %>
+          <h4><%= result.content %></h4>
+          <p><%= result.searchable_type %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
